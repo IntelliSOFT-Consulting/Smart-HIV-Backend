@@ -1,0 +1,17 @@
+networks:
+    hapi-fhir:
+        external: true
+
+
+services:
+    matchbox:
+        container_name: matchbox
+        image: intellisoftkenya/matchbox:latest
+        networks:
+            - hapi-fhir
+        restart: always
+        ports:
+            - "8080:8080"
+        volumes:
+            - /opt/smart-hiv/matchbox/matchbox-server/with-cda:/config
+
